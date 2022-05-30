@@ -140,4 +140,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CONSTANCE_CONFIG = {
     'email': ('suanlian.lethil@email.com', 'My email'),
+    'github': ('https://github.com/Suanlianmang/', 'My github link'),
 }

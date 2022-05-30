@@ -7,4 +7,78 @@
 {% endblock %}
 
 {% block body %}
+<header>
+    <h1 class="title">Hello!</h1>
+    <h3>I am Suanlinamang and this is my portfolio</h3>
+    <p>I believe programming is an art, primarily becaus I want to consider myself an artist😛.</p>
+    <nav class="link">
+        <a href="#contact_me" class="btn sec email">
+            <object data="{% static 'svg/contact_me.svg' %}" type="image/svg+xml"></object> 
+            <strong>Contact Me</strong>
+        </a>
+    </nav>
+</header>
+
+<section class="projects">
+    {% for p in projects %}
+    <div class="item">
+        <h3>{{ p.name }}</h3>
+        <p>{{ p.description }}</p>
+        <div class="link">
+            <a href="{{ p.github }}" class="btn sec github" target="_blank">
+                <object data="{% static 'svg/github.svg' %}" type="image/svg+xml"></object> 
+                <strong>Source Code</strong>
+            </a>
+            <a href="{{ p.site }}" class="btn" target="'_blank">
+                <object data="{% static 'svg/link.svg' %}" type="image/svg+xml"></object> 
+                <strong>Check it out</strong>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<footer id="contact_me">
+    <div class="form-section">
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <h1>Feel free to contact me</h1>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name..." required>
+            <label for="email">Emial</label>
+            <input type="email" name="email" id="email" placeholder="Your email..." required>
+            <label for="message">Message</label>
+            <textarea name="message" id="message" cols="0" rows="7" placeholder="Your message..." required></textarea>
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="link-section">
+        <h3>Links</h3>
+        <nav class="link">
+            <a href="{{ info.github }}" class="btn sec github" target="_blank">
+                <object data="{% static 'svg/github.svg' %}" type="image/svg+xml"></object> 
+                <strong>GitHub</strong>
+            </a>
+            <a href="{% static 'files/Resume.pdf' %}" class="btn sec email" target="_blank">
+                <object data="{% static 'svg/resume.svg' %}" type="image/svg+xml"></object> 
+                <strong>My Resume</strong>
+            </a>
+        </nav>
+
+    </div>
+</footer>
+
+{% endblock %}
+
+{% block script %}
+<!-- <script src="{% static 'js/scroll_view.js' %}"></script>
+<script>
+    window.onscroll = () =>{
+        items = document.getElementsByClassName('item');
+        for(i = 0; i < items.length; i++){
+            animateOnView(items[i], 'item-animation');
+        }
+    }
+</script> -->
+
 {% endblock %}

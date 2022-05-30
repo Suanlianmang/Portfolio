@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 import uuid
 
 
@@ -54,3 +55,20 @@ class CustomUser(AbstractUser):
 		return self.email
 
 
+class Projects(models.Model):
+	name = models.CharField(max_length=200)
+	description = models.TextField()
+	github = models.CharField(max_length=200)
+	site = models.CharField(max_length=200)
+	date = models.DateField(default=timezone.now)
+
+	def __str__(self):
+		return self.name
+
+class Message(models.Model):
+	name = models.CharField(max_length=200)
+	email = models.CharField(max_length=200)
+	text = models.TextField()
+
+	def __str__(self):
+		return self.name + " " + str(self.pk)
